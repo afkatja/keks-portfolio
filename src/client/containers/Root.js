@@ -1,36 +1,33 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { IntlProvider } from 'react-intl';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-// Import Redux Store Provider Component
-import { Provider } from 'react-redux';
+import ErrorBoundary from '../components/ErrorBoundary';
 
-export default class Root extends Component {
+const mapStateToProps = state => ({
+  language: state.language,
+});
+
+const withState = connect(mapStateToProps, null);
+
+class Root extends Component {
   constructor(props) {
-    super(props)
-
-    this.state = {
-      language: 'en'
-    }
+    super(props);
   }
 
   render() {
-    const { language } = this.state;
-    const { store, children } = this.props;
-    const state = store.getState();
+    const { language, children } = this.props;
     const messages = require('../translations/locales/' + language + '.json');
     return (
-      <IntlProvider locale={language} key={language} messages={messages}>
-        <Provider store={store}>
-          <div>
-            {children}
-          </div>
-        </Provider>
-      </IntlProvider>
+      <ErrorBoundary>
+        <IntlProvider locale={language} key={language} messages={messages}>
+          {children}
+        </IntlProvider>
+      </ErrorBoundary>
     )
   }
 }
 
-Root.propTypes = {
-  store: PropTypes.object.isRequired
-}
+export default withState(Root);

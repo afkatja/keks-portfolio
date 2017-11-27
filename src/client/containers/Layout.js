@@ -10,8 +10,6 @@ import Footer from '../components/molecules/Footer/Footer';
 
 export default function Layout(props) {
   const { theme, language, children } = props;
-  const lang = store.getState();
-  console.log(lang);
   return (
     <ErrorBoundary>
       <div className={classNames('site-container', theme)}>

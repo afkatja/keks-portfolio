@@ -1,3 +1,3 @@
 {
-  "app.helloWorld.greeting": "Welkom, {name}! Laatste update: {date}"
+  "app.welcome.greeting": "Welkom, {name}! Laatste update: {date}"
 }

@@ -16,7 +16,7 @@ export default function Welcome() {
             name: <i>World</i>,
             date: (
               <FormattedRelative
-                value={moment().add(7, 'days')}
+                value={moment().subtract(1, 'days')}
                 options={{ style: 'numeric', units: 'second' }}
               />
             )

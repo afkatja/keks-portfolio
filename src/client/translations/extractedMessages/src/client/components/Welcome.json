@@ -1,6 +1,6 @@
 [
   {
-    "id": "app.helloWorld.greeting",
+    "id": "app.welcome.greeting",
     "description": "Greeting to welcome the user to the app",
     "defaultMessage": "Hello, {name}! Last Action: {date}"
   }
