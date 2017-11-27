@@ -1,0 +1,74 @@
+{
+  "name": "keks-portfolio",
+  "version": "0.0.1",
+  "description": "Portfolio Anja Keks",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/afkatja/keks-portfolio.git"
+  },
+  "scripts": {
+    "start": "node_modules/.bin/webpack-dev-server",
+    "build:clean": "rimraf ./public/dist",
+    "build:prod": "npm run build:clean && cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
+    "build:prod:withstats": "npm run build:clean && cross-env NODE_ENV=production webpack --config webpack.config.prod.js --profile --json > webpack-stats.json",
+    "test": "jest --coverage",
+    "watch:test": "jest --watch",
+    "manage:translations": "babel-node ./translationRunner.js",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "lint": "eslint ./src"
+  },
+  "author": "Katja Hollaar",
+  "license": "MIT",
+  "devDependencies": {
+    "@storybook/addon-info": "^3.2.11",
+    "@storybook/addon-knobs": "^3.2.10",
+    "@storybook/react": "^3.2.11",
+    "autoprefixer": "^6.7.6",
+    "babel-cli": "^6.23.0",
+    "babel-core": "^6.26.0",
+    "babel-jest": "^19.0.0",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-react-intl": "^2.3.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "cross-env": "^3.2.3",
+    "css-loader": "^0.28.4",
+    "eslint": "^3.17.1",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-react": "^7.4.0",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "html-webpack-plugin": "^2.30.1",
+    "jest-cli": "^19.0.2",
+    "node-sass": "^4.5.3",
+    "resolve-url-loader": "^2.1.0",
+    "react-hot-loader": "^3.0.0-beta.7",
+    "react-intl-translations-manager": "^4.0.1",
+    "rimraf": "^2.6.1",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.13.2",
+    "webpack": "3.8.1",
+    "webpack-dev-server": "2.9.4"
+  },
+  "dependencies": {
+    "intl": "^1.2.5",
+    "json-loader": "^0.5.4",
+    "moment": "^2.17.1",
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-intl": "^2.2.3",
+    "react-redux": "^5.0.3",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "src/client/**/*.js"
+    ]
+  }
+}
