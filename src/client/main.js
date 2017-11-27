@@ -1,8 +1,6 @@
-// Import React
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-// Import Redux Store
 import store from './store/store';
 
 // Import React-Intl with supported languages
@@ -14,11 +12,33 @@ import nl from 'react-intl/locale-data/nl';
 // Import Styles
 import './stylesheets/main.scss';
 
-// Import Root Component
+import App from './App';
 import Root from './containers/Root';
 
 // Globally register React-Intl languages
 addLocaleData([...ru, ...en, ...nl]);
+
+function select(state) {
+  return state;
+}
+
+let currentValue;
+function handleChange() {
+  let previousValue = currentValue;
+  currentValue = select(store.getState());
+
+  if (previousValue !== currentValue) {
+    console.log(
+      'Some deep nested property changed from',
+      previousValue,
+      'to',
+      currentValue
+    );
+  }
+}
+
+const unsubscribe = store.subscribe(handleChange);
+unsubscribe();
 
 if (!global.Intl) {
   require.ensure(
@@ -43,7 +63,9 @@ if (!global.Intl) {
 // Render application
 function renderApp() {
   ReactDOM.render(
-    <Root store={store} />,
+    <Root store={store}>
+      <App />
+    </Root>,
     document.getElementById('root')
   );
 }

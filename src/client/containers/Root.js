@@ -1,14 +1,11 @@
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import React from 'react';
 import { IntlProvider } from 'react-intl';
 
 // Import Redux Store Provider Component
 import { Provider } from 'react-redux';
 
-// Import our Component
-import HelloWorld from '../components/HelloWorld.js';
-
-export default class Root extends React.Component {
+export default class Root extends Component {
   constructor(props) {
     super(props)
 
@@ -19,22 +16,14 @@ export default class Root extends React.Component {
 
   render() {
     const { language } = this.state;
+    const { store, children } = this.props;
+    const state = store.getState();
     const messages = require('../translations/locales/' + language + '.json');
-
     return (
       <IntlProvider locale={language} key={language} messages={messages}>
-        <Provider store={this.props.store}>
-          <div className="site-container">
-            <select
-              value={language}
-              onChange={({ target: { value } }) =>
-                this.setState({ language: value })}
-            >
-              <option value="ru">Русский</option>
-              <option value="en">English</option>
-              <option value="nl">Nederlands</option>
-            </select>
-            <HelloWorld />
+        <Provider store={store}>
+          <div>
+            {children}
           </div>
         </Provider>
       </IntlProvider>

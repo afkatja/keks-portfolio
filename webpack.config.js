@@ -45,7 +45,7 @@ const devConfig = {
   ],
   devServer: {
     contentBase: path.join(__dirname, 'src'),
-    compress: true,
+    compress: false,
     port: 3333
   },
 }

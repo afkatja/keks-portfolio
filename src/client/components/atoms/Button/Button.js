@@ -4,13 +4,13 @@ import React from 'react';
 import './Button.scss';
 
 const Button = ({ type = '', text, onClick }) => (
-  <button className={'button ' + type} onClick={onClick}>{text}</button>
+  <button className={`button ${type}`} onClick={onClick}>{text}</button>
 );
 
 Button.propTypes = {
-  type: PropTypes.string,
-  text: PropTypes.string,
-  onClick: PropTypes.func
+  type: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Button;

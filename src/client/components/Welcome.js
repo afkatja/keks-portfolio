@@ -2,14 +2,16 @@ import React from 'react';
 import { FormattedRelative, FormattedMessage } from 'react-intl';
 import moment from 'moment';
 
-export default function HelloWorld() {
+import ErrorBoundary from './ErrorBoundary';
+
+export default function Welcome() {
   return (
-    <h1 className="hw-headline">
-      <span>
+    <ErrorBoundary>
+      <h1 className="headline">
         <FormattedMessage
-          id="app.helloWorld.greeting"
+          id="app.welcome.greeting"
           description="Greeting to welcome the user to the app"
-          defaultMessage="Hello, {name}! Last Action: {date}"
+          defaultMessage="Hello, {name}! Last updated: {date}"
           values={{
             name: <i>World</i>,
             date: (
@@ -20,7 +22,7 @@ export default function HelloWorld() {
             )
           }}
         />
-      </span>
-    </h1>
+      </h1>
+    </ErrorBoundary>
   );
 }
