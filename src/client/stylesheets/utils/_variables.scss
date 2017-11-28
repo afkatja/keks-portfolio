@@ -1,13 +1,4 @@
-$colors: (
-  'primary': #444
-);
-$color-primary: #444;
-$color-green: #26a69a;
-$color-green-dark: #004d40;
-$color-active-nav: transparentize($color-green-dark, .7);
-
-$color-text-light-theme: #444;
-$color-gray: #888;
+$default-gutter: 2.5rem;
 
 @mixin clearfix {
   overflow: hidden;
@@ -56,4 +47,60 @@ $breakpoint-xxl: 1800px;
 @mixin center-horizontal {
   left: 50%;
   transform: translateX(-50%);
+}
+
+@mixin transition($prop: all, $timing: .3s, $easing: ease-in-out) {
+  transition: $prop $timing $easing;
+}
+
+@mixin fullscreen {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+@mixin icon-button {
+  @include normalize-button;
+  padding: 0;
+  margin: 0;
+  width: 20px;
+  min-width: 0;
+  height: 20px;
+  position: relative;
+  > svg {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+}
+
+@function inner-gutter($gutter) {
+  @return $gutter / 2;
+}
+
+@function outer-gutter($gutter) {
+  @return $gutter / 4;
+}
+@mixin container-division($divisions: 1, $container-portion: 1, $gutter: $default-gutter, $resize: true) {
+  $calculated-width: (100% / $divisions) * $container-portion;
+  $calculated-phone-width: if($gutter == 0, 100%, calc(100% - #{$gutter}));
+  min-width: if($gutter == 0, $calculated-width, calc(#{$calculated-width} - #{$gutter}));
+  max-width: if($gutter == 0, $calculated-width, calc(#{$calculated-width} - #{$gutter}));
+  margin: if($gutter > 0, inner-gutter($gutter), $gutter);
+  @if ($divisions > 1 and $resize == true) {
+    @include media-query-max($breakpoint-phone-only) {
+      width: $calculated-phone-width;
+      min-width: $calculated-phone-width;
+      max-width: $calculated-phone-width;
+    }
+  }
+}
+
+@mixin grid-division($divisions: 4, $gutter: $default-gutter) {
+  $calculated-width: (100% / $divisions);
+  min-width: if($gutter == 0, $calculated-width, calc(#{$calculated-width} - #{inner-gutter($gutter) * 2}));
+  max-width: if($gutter == 0, $calculated-width, calc(#{$calculated-width} - #{inner-gutter($gutter) * 2}));
+  margin: inner-gutter($gutter);
 }

@@ -17,3 +17,20 @@ img {
   display: block;
   max-width: 100%;
 }
+
+@mixin normalize-button {
+  border: none;
+  padding: 0;
+  min-width: 0;
+  background: none;
+  box-shadow: none;
+  font-size: inherit;
+  font-family: inherit;
+  vertical-align: top;
+  -webkit-appearance: none;
+  &:hover, &:focus {
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+  }
+}

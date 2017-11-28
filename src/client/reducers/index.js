@@ -31,6 +31,7 @@ export default (state = initialState, action) => {
     case LIGHTBOX_CLOSE_CLICK:
       return { ...state, lightboxShown: false };
     case LIGHTBOX_OPEN:
+      console.log('open lightbox', action.payload);
       return {
         ...state,
         lightboxShown: true,

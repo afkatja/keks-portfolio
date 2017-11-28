@@ -3,8 +3,8 @@ import React from 'react';
 
 import './Button.scss';
 
-const Button = ({ type = '', text, onClick }) => (
-  <button className={`button ${type}`} onClick={onClick}>{text}</button>
+const Button = ({ type = '', className, text, children, onClick }) => (
+  <button type={type} className={`button ${className}`} onClick={onClick}>{text}{children}</button>
 );
 
 Button.propTypes = {

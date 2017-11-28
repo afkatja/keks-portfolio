@@ -25,12 +25,13 @@ html, body, #root {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     min-height: 100vh;
-    main {
+    main, main > div {
       flex: 1 0 auto;
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative;
     }
   }
 }

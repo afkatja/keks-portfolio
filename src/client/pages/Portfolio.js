@@ -2,6 +2,7 @@ import React from 'react';
 
 import Slider from '../components/organisms/Slider';
 import SliderUnit from '../components/molecules/SliderUnit/SliderUnit';
+import Lightbox from '../components/organisms/Lightbox';
 
 const items = [
   {
@@ -113,19 +114,18 @@ export default function Portfilio(props) {
         <h1>Portfolio</h1>
       </header>
       <div className="page-container">
-        <div className="fc-item-slider-container">
-          <Slider items={items} {...props}>
-            {items.map((item, index) => (
-              <SliderUnit
-                key={`gallery-${item.id}`}
-                index={index}
-                items={items}
-                {...item}
-              />
-            ))}
-          </Slider>
-        </div>
+        <Slider items={items} {...props}>
+          {items.map((item, index) => (
+            <SliderUnit
+              key={`gallery-${item.id}`}
+              index={index}
+              items={items}
+              {...item}
+            />
+          ))}
+        </Slider>
       </div>
+      <Lightbox />
     </div>
   );
 }

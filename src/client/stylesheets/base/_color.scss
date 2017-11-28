@@ -1,1 +1,12 @@
-$color-primary: rgb(41, 130, 217) !default;
+$colors: (
+  'primary': #444
+);
+$color-primary: #444;
+$color-green: #26a69a;
+$color-green-dark: #004d40;
+$color-active-nav: transparentize($color-green-dark, .7);
+
+$color-text-light-theme: #444;
+$color-gray: #888;
+$color-white: #fff;
+$transparent: rgba(255,255,255, 0);
