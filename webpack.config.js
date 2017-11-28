@@ -11,17 +11,30 @@ const HtmlWebpackPluginConfig= new HtmlWebpackPlugin({
 });
 
 const devConfig = {
-  entry: path.join(__dirname, 'src', 'client', 'main.js'),
+  devtool: 'cheap-module-source-map',
+  entry: [
+    'webpack-dev-server/client?http://localhost:3333',
+    'webpack/hot/only-dev-server',
+    path.join(__dirname, 'src', 'client', 'main.js')
+  ],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'app.js'
+    filename: 'app.js',
+    publicPath: '/',
   },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        use: ['babel-loader'],
-        exclude: /node_modules/
+        test: /\.js|jsx?$/,
+        use: [
+          {
+            loader: 'babel-loader',
+            query: {
+              presets: ['es2015']
+            }
+          }
+        ],
+        include: path.join(__dirname, 'src')
       },
       {
         test: /\.scss$/,
@@ -48,13 +61,17 @@ const devConfig = {
   },
   plugins: [
     HtmlWebpackPluginConfig,
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
   ],
   devServer: {
+    publicPath: '/',
     contentBase: path.join(__dirname, 'src'),
-    compress: false,
-    port: 3333
+    compress: true,
+    port: 3333,
+    hot: true,
+    historyApiFallback: true
   },
 }
 

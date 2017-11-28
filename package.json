@@ -7,7 +7,7 @@
     "url": "https://github.com/afkatja/keks-portfolio.git"
   },
   "scripts": {
-    "start": "node_modules/.bin/webpack-dev-server",
+    "start": "node devserver.js",
     "build:clean": "rimraf ./public/dist",
     "build:prod": "npm run build:clean && cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
     "build:prod:withstats": "npm run build:clean && cross-env NODE_ENV=production webpack --config webpack.config.prod.js --profile --json > webpack-stats.json",
@@ -55,6 +55,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "css-loader": "^0.28.7",
+    "eslint-loader": "^1.9.0",
     "file-loader": "^1.1.5",
     "intl": "^1.2.5",
     "json-loader": "^0.5.4",
