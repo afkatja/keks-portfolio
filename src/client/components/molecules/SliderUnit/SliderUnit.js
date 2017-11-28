@@ -24,7 +24,6 @@ function FCSliderUnit(props) {
     e.preventDefault();
     props.onClickOpen();
   };
-  console.log(props.index, props.index === props.data.activeItem);
 
   return (
     <a

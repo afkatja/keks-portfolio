@@ -10,6 +10,7 @@ import Button from '../atoms/Button/Button';
 
 const mapStateToProps = state => ({
   activeItem: state.activeItem,
+  lightboxOpen: state.lightboxShown,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
@@ -71,19 +72,16 @@ class Slider extends Component {
 
     this.calculateEnd = (activeImage) => {
       const count = this.props.items.length;
-      // On a 1of1 layout slider, 4 items are visible on desktop in the container, 2 on landscape tablet, and 1 otherwise
-      let itemsInView = 1;
-      if (this.props.layoutType === '1of1') {
-        itemsInView = this.getItemsInView();
-        return activeImage > count - itemsInView;
-      }
-      return activeImage === count - itemsInView;
+      const itemsInView = this.getItemsInView();
+      return activeImage >= count - itemsInView;
     };
 
     this.setTranslation = (activeImage) => {
       let translateValue = 100; // 100%
-      if (window.matchMedia(mq.desktop).matches) {
-        translateValue = 100 / this.getItemsInView();
+      if (!this.props.lightboxOpen) {
+        if (window.matchMedia(mq.desktop).matches) {
+          translateValue = 100 / this.getItemsInView();
+        }
       }
       const translateWidth = translateValue * activeImage;
       return {
@@ -100,6 +98,7 @@ class Slider extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props.currentItem);
     this.setActiveItem(this.props.currentItem ? this.props.currentItem : 0);
   }
 

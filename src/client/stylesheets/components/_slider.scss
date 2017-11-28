@@ -64,9 +64,6 @@
     }
   }
   &.lightbox-slider {
-    height: 100%;
-    @include flex-container(column);
-    justify-content: center;
     .slider-button {
       &::before {
         display: none;

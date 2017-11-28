@@ -63,7 +63,6 @@ class Lightbox extends Component {
 
   render() {
     const { open, ...props } = this.props;
-    console.log('lightbox open?', open);
     return open ? (
       <div className={classNames('lightbox-wrapper', { open })} onClick={this.props.onCloseClick} role="none">
         <div className="lightbox-container" onClick={this.handleContainerClick} role="presentation">
