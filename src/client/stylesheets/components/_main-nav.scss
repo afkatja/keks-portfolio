@@ -1,0 +1,79 @@
+.main-nav {
+  background: $color-green;
+  position: relative;
+  .container {
+    max-width: 70rem;
+    @include center-block;
+    @include flex-container;
+  }
+  .logo {
+    width: 100px;
+  }
+  ul {
+    list-style: none;
+    margin: 0 1rem 0 auto;
+    @include flex-container;
+    li:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
+  a {
+    display: block;
+    line-height: 3rem;
+    padding: .5rem;
+    text-decoration: none;
+    cursor: pointer;
+    color: #fff;
+    &.active {
+      background: $color-active-nav;
+    }
+  }
+  .subnav {
+    display: none;
+    flex-direction: column;
+    background: $color-green;
+    &.expanded,
+    &.active {
+      display: flex;
+      position: relative;
+      z-index: 2;
+    }
+    li {
+      display: block;
+      float: none;
+      a {
+        padding: .5rem;
+        line-height: 1;
+      }
+    }
+  }
+  .language-switch {
+    position: relative;
+    margin-left: 1rem;
+    border-left: 1px solid transparentize(#fff, .2);
+    padding-left: 1rem;
+    select {
+      -webkit-appearance: none;
+      line-height: 3rem;
+      border: none;
+      box-shadow: none;
+      border-radius: 0;
+      background: none;
+      font-size: 1rem;
+      color: #fff;
+      cursor: pointer;
+      &:focus, &:hover {
+        outline: none;
+        text-shadow: 1px 1px transparentize($color-primary, .5);
+      }
+    }
+    &::after {
+      content: '\25BC';
+      color: #fff;
+      font-size: .75rem;
+      position: absolute;
+      right: 1rem;
+      @include center-vertical;
+    }
+  }
+}

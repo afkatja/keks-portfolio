@@ -1,0 +1,24 @@
+.site-footer {
+  .container {
+    max-width: 70rem;
+    @include center-block;
+    .colophon {
+      @include flex-container;
+      font-size: .85rem;
+      a {
+        display: block;
+        text-decoration: none;
+        color: $color-primary;
+        line-height: 2rem;
+      }
+      li {
+        &:not(:last-child) {
+          margin-right: 1rem;
+        }
+        &.made-by {
+          margin-left: auto;
+        }
+      }
+    }
+  }
+}

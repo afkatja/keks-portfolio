@@ -2,3 +2,18 @@
   box-sizing: border-box;
   position: relative;
 }
+
+.list-plain {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+figure {
+  max-width: 100%;
+  margin: 0;
+}
+img {
+  display: block;
+  max-width: 100%;
+}

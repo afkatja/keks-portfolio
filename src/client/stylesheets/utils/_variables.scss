@@ -1,3 +1,59 @@
 $colors: (
-  'primary': rgb(41, 130, 217)
+  'primary': #444
 );
+$color-primary: #444;
+$color-green: #26a69a;
+$color-green-dark: #004d40;
+$color-active-nav: transparentize($color-green-dark, .7);
+
+$color-text-light-theme: #444;
+$color-gray: #888;
+
+@mixin clearfix {
+  overflow: hidden;
+  &::before, &::after {
+    content: '';
+    display: table;
+  }
+  &::after {
+    clear: both;
+  }
+}
+
+$breakpoint-phone-only: 600px;
+$breakpoint-tablet-portrait: 900px;
+$breakpoint-tablet-landscape: 1024px;
+$breakpoint-desktop: 1200px;
+$breakpoint-xl: 1600px;
+$breakpoint-xxl: 1800px;
+
+@mixin media-query-max($breakpoint) {
+  @media (max-width: $breakpoint) { @content; }
+}
+@mixin media-query-min($breakpoint) {
+  @media (min-width: $breakpoint) { @content; }
+}
+@mixin media-query-range($min, $max) {
+  @media (min-width: $min) and (max-width: $max) { @content; }
+}
+
+@mixin center-block {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin flex-container ($direction: row, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: if($direction == row, wrap, nowrap);
+  align-items: $align;
+}
+
+@mixin center-vertical {
+  top: 50%;
+  transform: translateY(-50%);
+}
+@mixin center-horizontal {
+  left: 50%;
+  transform: translateX(-50%);
+}

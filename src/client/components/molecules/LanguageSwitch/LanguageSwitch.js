@@ -20,14 +20,16 @@ function LanguageSwitch(props) {
     props.languageChangeClick(value);
   };
   return (
-    <select
-      value={language}
-      onChange={handleLanguageChange}
-    >
-      <option value="ru">Русский</option>
-      <option value="en">English</option>
-      <option value="nl">Nederlands</option>
-    </select>
+    <div className="language-switch">
+      <select
+        value={language}
+        onChange={handleLanguageChange}
+      >
+        <option value="ru">Русский</option>
+        <option value="en">English</option>
+        <option value="nl">Nederlands</option>
+      </select>
+    </div>
   );
 }
 

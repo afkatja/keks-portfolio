@@ -1,0 +1,11 @@
+.headline {
+  color: $color-primary;
+  display: flex;
+}
+
+.home-header {
+  figure {
+    max-height: 30rem;
+    overflow: hidden;
+  }
+}
