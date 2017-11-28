@@ -9,14 +9,11 @@ import LanguageSwitch from '../components/molecules/LanguageSwitch/LanguageSwitc
 import Footer from '../components/molecules/Footer/Footer';
 
 export default function Layout(props) {
-  const { theme, language, children } = props;
+  const { theme, language, links, children } = props;
   return (
     <ErrorBoundary>
       <div className={classNames('site-container', theme)}>
-        <MainNav links={[
-          { id: 'home', url: '/', text: 'Home'},
-          { id: 'about', url: '/about', text: 'About'}
-        ]}>
+        <MainNav links={links}>
           <LanguageSwitch language={language} />
         </MainNav>
         <main>
@@ -28,4 +25,4 @@ export default function Layout(props) {
   );
 }
 
-export const withLayout = Component => props => <Layout><Component {...props} /></Layout>;
+export const withLayout = Component => links => props => <Layout links={links}><Component {...props} /></Layout>;
