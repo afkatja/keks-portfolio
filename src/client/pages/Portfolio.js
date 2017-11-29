@@ -1,7 +1,6 @@
 import React from 'react';
 
-import Slider from '../components/organisms/Slider';
-import SliderUnit from '../components/molecules/SliderUnit/SliderUnit';
+import Gallery from '../components/organisms/Gallery';
 import Lightbox from '../components/organisms/Lightbox';
 
 const items = [
@@ -107,23 +106,14 @@ const items = [
   },
 ];
 
-export default function Portfilio(props) {
+export default function Portfilio() {
   return (
     <div>
       <header className="page-header">
         <h1>Portfolio</h1>
       </header>
       <div className="page-container">
-        <Slider items={items} {...props}>
-          {items.map((item, index) => (
-            <SliderUnit
-              key={`gallery-${item.id}`}
-              index={index}
-              items={items}
-              {...item}
-            />
-          ))}
-        </Slider>
+        <Gallery items={items} />
       </div>
       <Lightbox />
     </div>

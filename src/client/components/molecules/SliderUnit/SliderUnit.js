@@ -19,12 +19,12 @@ const mapDispatchToProps = (dispatch, ownProps) => bindActionCreators({
 }, dispatch);
 const withState = connect(state => ({ open: state.lightboxShown }), mapDispatchToProps);
 
-function FCSliderUnit(props) {
+function SliderUnit(props) {
   const openLightbox = (e) => {
     e.preventDefault();
     props.onClickOpen();
   };
-
+  console.log(props);
   return (
     <a
       href={props.imgSrc.full}
@@ -36,4 +36,4 @@ function FCSliderUnit(props) {
   );
 }
 
-export default withState(FCSliderUnit);
+export default withState(SliderUnit);

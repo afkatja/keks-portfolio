@@ -1,0 +1,11 @@
+.gallery-container {
+  @include flex-container(column, flex-start);
+  flex-wrap: wrap;
+  max-height: calc(100vh - 8rem);
+  max-width: 100%;
+  overflow: hidden;
+  li {
+    display: block;
+    @include container-division(3, 1)
+  }
+}
