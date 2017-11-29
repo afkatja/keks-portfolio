@@ -13,9 +13,10 @@ const HtmlWebpackPluginConfig= new HtmlWebpackPlugin({
 const devConfig = {
   devtool: 'cheap-module-source-map',
   entry: [
+    'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:3333',
     'webpack/hot/only-dev-server',
-    path.join(__dirname, 'src', 'client', 'main.js')
+    './src/client/main.js'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -26,15 +27,8 @@ const devConfig = {
     rules: [
       {
         test: /\.js|jsx?$/,
-        use: [
-          {
-            loader: 'babel-loader',
-            query: {
-              presets: ['es2015']
-            }
-          }
-        ],
-        include: path.join(__dirname, 'src')
+        use: ['babel-loader'],
+        exclude: /node_modules/
       },
       {
         test: /\.scss$/,
@@ -61,13 +55,14 @@ const devConfig = {
   },
   plugins: [
     HtmlWebpackPluginConfig,
+    new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
   ],
   devServer: {
+    host: 'localhost',
     publicPath: '/',
-    contentBase: path.join(__dirname, 'src'),
     compress: true,
     port: 3333,
     hot: true,
