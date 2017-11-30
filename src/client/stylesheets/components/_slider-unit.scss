@@ -1,0 +1,13 @@
+.slider-unit {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  @include container-division(4, 1, outer-gutter($default-gutter));
+  &.gallery-item {
+    @include container-division(1, 1, 0);
+  }
+  .image-caption {
+    text-decoration: none;
+    font-size: .85rem;
+  }
+}

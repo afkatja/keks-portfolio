@@ -2,11 +2,10 @@
   position: absolute;
   z-index: 5;
   @include fullscreen;
-  background: transparentize($color-primary, .5);
-  @include flex-container(column, center);
-  justify-content: center;
+  background: transparentize($color-primary, .3);
   opacity: 0;
   pointer-events: none;
+  @include flex-container(column, center);
   &.open {
     opacity: 1;
     pointer-events: all;
@@ -28,6 +27,12 @@
     z-index: 2;
     > svg {
       fill: $color-white;
+    }
+  }
+  .lightbox-slider-image {
+    max-height: calc(100vh - 8rem - #{$default-gutter * 2});
+    .image-caption {
+      margin-top: 1rem;
     }
   }
 }

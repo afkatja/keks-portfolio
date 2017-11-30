@@ -24,11 +24,10 @@ function SliderUnit(props) {
     e.preventDefault();
     props.onClickOpen();
   };
-  console.log(props);
   return (
     <a
       href={props.imgSrc.full}
-      className={classNames('slider-unit', { active: props.index === props.data.activeItem })}
+      className={classNames('slider-unit', { active: props.index === props.data.activeItem }, props.className)}
       onClick={e => openLightbox(e)}
     >
       <Image className="slider-image-container" src={props.imgSrc.thumb} descr="slider item" />

@@ -25,6 +25,7 @@ const Gallery = props => (
           index={index}
           items={props.items}
           data={props}
+          className="gallery-item"
           {...item}
         />
       </li>))}
