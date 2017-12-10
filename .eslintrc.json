@@ -1,5 +1,6 @@
 {
   "extends": "airbnb",
+  "parser": "babel-eslint",
   "env": {
     "browser": true
   },
@@ -10,7 +11,8 @@
   "rules": {
     "react/jsx-filename-extension": [
       1, {
-        "extensions": [".js", ".jsx"] }
+        "extensions": [".js", ".jsx"]
+      }
     ],
     "react/prop-types": 0,
     "no-extraneous-dependencies": 0,
@@ -23,6 +25,11 @@
       "node": {
         "paths": ["src"]
       }
-    }
+    },
+    "import/parser": "babel-eslint",
+    "ecmaFeatures": {
+      "classes": true,
+      "jsx": true
+    },
   }
 }
