@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
 const path = require('path');
 // Import plugins
 const HtmlWebpackPlugin = require('html-webpack-plugin');
